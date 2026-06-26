@@ -37,7 +37,7 @@ AI/ML
 
 Project Structure
 
-```text
+
 GramVaani/
 ├── backend/
 │   ├── app/
