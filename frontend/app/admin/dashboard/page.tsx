@@ -35,22 +35,7 @@ import {
 import "leaflet/dist/leaflet.css";
 
 // --- Dynamic Imports for Map (Client-side only) ---
-const MapContainer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.MapContainer),
-  { ssr: false }
-);
-const TileLayer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.TileLayer),
-  { ssr: false }
-);
-const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
-);
-const Popup = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Popup),
-  { ssr: false }
-);
+
 
 // Fix for Leaflet default marker icons in Next.js
 import L from "leaflet";
@@ -222,7 +207,6 @@ export default function AdminDashboard() {
         <div className="flex items-center gap-4">
           <div className="hidden md:flex gap-1 bg-gray-100 dark:bg-gray-700 p-1 rounded-lg">
             <TabButton active={activeTab === "list"} onClick={() => setActiveTab("list")} icon={<ListChecks size={16}/>} label="List" />
-            <TabButton active={activeTab === "map"} onClick={() => setActiveTab("map")} icon={<MapIcon size={16}/>} label="Map" />
             <TabButton active={activeTab === "analytics"} onClick={() => setActiveTab("analytics")} icon={<BarChart3 size={16}/>} label="Analytics" />
           </div>
           <button onClick={handleLogout} className="text-red-500 hover:bg-red-50 p-2 rounded-full transition">
@@ -341,31 +325,7 @@ export default function AdminDashboard() {
         )}
 
         {/* --- VIEW: MAP --- */}
-        {activeTab === "map" && (
-          <div className="bg-white dark:bg-gray-800 p-1 rounded-xl shadow-lg h-[600px] z-0 relative">
-             <MapContainer 
-               center={[26.8467, 80.9462]} 
-               zoom={7} 
-               style={{ height: "100%", width: "100%", borderRadius: "10px" }}
-             >
-               <TileLayer
-                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                 attribution='&copy; OpenStreetMap contributors'
-               />
-               {filteredGrievances.filter(g => g.latitude && g.longitude).map((g) => (
-                 <Marker key={g.id} position={[g.latitude!, g.longitude!]} icon={icon}>
-                   <Popup>
-                     <div className="text-sm">
-                       <strong className="block text-blue-600 mb-1">{g.category}</strong>
-                       <p className="mb-2">{g.description}</p>
-                       <span className="text-xs bg-gray-100 px-2 py-1 rounded border">Status: {g.status}</span>
-                     </div>
-                   </Popup>
-                 </Marker>
-               ))}
-             </MapContainer>
-          </div>
-        )}
+     
 
         {/* --- VIEW: ANALYTICS --- */}
         {activeTab === "analytics" && (
@@ -488,25 +448,7 @@ export default function AdminDashboard() {
               </div>
 
               {/* Section 2: AI Solution */}
-              <div>
-                <h4 className="text-blue-600 dark:text-blue-400 text-sm font-semibold uppercase tracking-wider mb-2 flex items-center gap-2">
-                  <Lightbulb size={16} /> Gemini AI Recommendation
-                </h4>
-                
-                <div className="space-y-3">
-                  {/* Parsing the solution text to make it look structured */}
-                  <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-800">
-                     <div className="text-sm text-gray-700 dark:text-gray-300 whitespace-pre-line leading-7">
-                        {/* We use dangerouslySetInnerHTML to allow bold tags from the backend */}
-                        <span dangerouslySetInnerHTML={{ 
-                          __html: selectedGrievance.solution
-                            .replace(/\*\*Short-term Action:\*\*/g, '<strong class="text-blue-700 block text-base mb-1">🚀 Short-term Action:</strong>')
-                            .replace(/\*\*Long-term Solution:\*\*/g, '<br/><strong class="text-green-700 block text-base mb-1 mt-4">🌳 Long-term Solution:</strong>') 
-                        }} />
-                     </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
 
             {/* Modal Footer */}
