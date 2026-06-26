@@ -1,5 +1,5 @@
 ```md
-# GramVaani
+### GramVaani
 
 GramVaani is an AI-powered grievance redressal system that allows citizens to submit complaints through text or speech. The system converts multilingual speech into English text, analyzes the grievance, classifies it, and allows admins to view and manage submitted complaints.
 
