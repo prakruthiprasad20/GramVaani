@@ -240,7 +240,7 @@ export default function GrievanceChatbot({
         <div>
           <h3 className="text-white font-semibold text-lg">AI Assistant</h3>
           <p className="text-blue-100 text-xs">
-            Speech-to-text enabled grievance assistant
+            Speech-to-text and Audio-to-text enabled grievance assistant
           </p>
         </div>
       </div>

@@ -13,7 +13,13 @@ class UserLogin(BaseModel):
     password: str
     
 
-#Schema for Token Response
+# #Schema for Token Response
+# class TokenResponse(BaseModel):
+#     access_token: str
+#     token_type: str = "bearer"
+
+
 class TokenResponse(BaseModel):
     access_token: str
-    token_type: str = "bearer"
+    token_type: str
+    role: str | None = None

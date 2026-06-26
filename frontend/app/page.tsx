@@ -50,7 +50,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            AI-Powered Grievance Management System
+Multilingual AI-Based Grievance Redressal System
           </motion.h1>
 
           <motion.p
@@ -137,34 +137,9 @@ export default function HomePage() {
       <footer className="bg-gray-900 text-gray-400 py-6 text-center text-sm">
         <div className="space-y-2">
           <p>
-            © 2025 AI-Powered Grievance Management System | Built by{" "}
-            <span className="text-cyan-400 font-semibold">Krishna</span>{" "}
-            {/* Used accent color for name */}
+            © 2026 GramVaani - Multilingual AI-Based Grievance Redressal System 
           </p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <a
-              href="mailto:kant19krishna@gmail.com"
-              className="hover:text-white transition-colors duration-200"
-            >
-              📧 Email
-            </a>
-            <a
-              href="https://x.com/krixna01"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-200"
-            >
-              🐦 Twitter
-            </a>
-            <a
-              href="https://www.linkedin.com/in/your_linkedin" // Remember to update this with your actual LinkedIn
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition-colors duration-200"
-            >
-              💼 LinkedIn
-            </a>
-          </div>
+        
         </div>
       </footer>
     </div>
