@@ -20,24 +20,10 @@ export default function Navbar() {
           onClick={() => router.push("/")}
           className="text-xl font-semibold text-gray-800 dark:text-white cursor-pointer hover:text-cyan-400 dark:hover:text-blue-400 transition"
         >
-          Public Grievance Portal
+          GramVaani
         </h1>
 
-        <div className="flex items-center gap-4">
-          <button className="flex items-center gap-1 text-gray-700 dark:text-gray-300 hover:text-cyan-400 transition">
-            <Globe size={18} /> Eng / हिंदी
-          </button>
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-md bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition"
-          >
-            {darkMode ? (
-              <Sun size={18} className="text-yellow-400" />
-            ) : (
-              <Moon size={18} className="text-gray-600" />
-            )}
-          </button>
-        </div>
+        
       </div>
     </nav>
   );

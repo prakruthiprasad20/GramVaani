@@ -18,39 +18,59 @@ export default function AuthForm({ type, role }: AuthFormProps) {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const getErrorMessage = (detail: unknown) => {
+  if (typeof detail === "string") return detail;
+
+  if (Array.isArray(detail)) {
+    return detail
+      .map((item) => {
+        if (typeof item === "string") return item;
+        if (item && typeof item === "object" && "msg" in item) {
+          return String((item as { msg: unknown }).msg);
+        }
+        return "Invalid request";
+      })
+      .join(", ");
+  }
+
+  return "Something went wrong";
+};
+
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setError("");
-    setSuccess("");
+  e.preventDefault();
+  setLoading(true);
+  setError("");
+  setSuccess("");
 
-    try {
-      const endpoint = type === "register" ? "/auth/register" : "/auth/login";
-      const payload =
-        type === "register"
-          ? form
-          : { email: form.email, password: form.password };
+  try {
+    const endpoint = type === "register" ? "/auth/register" : "/auth/login";
+    const payload =
+      type === "register"
+        ? form
+        : { email: form.email, password: form.password };
 
-      const res = await api.post(endpoint, payload);
-      const { access_token } = res.data;
+    const res = await api.post(endpoint, payload);
+    const { access_token, role: returnedRole } = res.data;
 
-      if (!access_token) throw new Error("Invalid response from server");
+    if (!access_token) throw new Error("Invalid response from server");
 
-      localStorage.setItem("token", access_token);
-      localStorage.setItem("role", role);
+    const finalRole = returnedRole || role;
 
-      setSuccess("Success! Redirecting...");
+    localStorage.setItem("token", access_token);
+    localStorage.setItem("role", finalRole);
 
-      setTimeout(() => {
-        router.push(role === "admin" ? "/admin/dashboard" : "/user/dashboard");
-      }, 1500);
-    } catch (err) {
-      const error = err as AxiosError<{ detail?: string }>;
-      setError(error.response?.data?.detail || "Something went wrong");
-    } finally {
-      setLoading(false);
-    }
-  };
+    setSuccess("Success! Redirecting...");
+
+    setTimeout(() => {
+      router.push(finalRole === "admin" ? "/admin/dashboard" : "/user/dashboard");
+    }, 1500);
+  } catch (err) {
+  const error = err as AxiosError<{ detail?: unknown }>;
+  setError(getErrorMessage(error.response?.data?.detail));
+} finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-blue-50 via-white to-blue-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 flex flex-col items-center justify-center">
