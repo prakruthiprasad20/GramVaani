@@ -1,9 +1,9 @@
 ```md
-### GramVaani
+ GramVaani
 
 GramVaani is an AI-powered grievance redressal system that allows citizens to submit complaints through text or speech. The system converts multilingual speech into English text, analyzes the grievance, classifies it, and allows admins to view and manage submitted complaints.
 
-## Features
+Features
 
 - Citizen registration and login
 - Admin login with role-based access
@@ -15,27 +15,27 @@ GramVaani is an AI-powered grievance redressal system that allows citizens to su
 - Admin dashboard to view and manage all grievances
 - Analytics and forecasting support
 
-## Tech Stack
+Tech Stack
 
-**Frontend**
+Frontend
 - Next.js
 - React
 - Tailwind CSS
 - Axios
 
-**Backend**
+Backend
 - FastAPI
 - SQLAlchemy
 - SQLite
 - JWT Authentication
 - Faster Whisper
 
-**AI/ML**
+AI/ML
 - Whisper / Faster Whisper for speech-to-text translation
 - NLP-based grievance classification
 - Forecasting and analytics modules
 
-## Project Structure
+Project Structure
 
 ```text
 GramVaani/
@@ -58,16 +58,16 @@ GramVaani/
 └── README.md
 ```
 
-## Installation
+Installation
 
-### 1. Clone The Repository
+1. Clone The Repository
 
 ```bash
 git clone https://github.com/prakruthiprasad20/GramVaani.git
 cd GramVaani
 ```
 
-## Backend Setup
+Backend Setup
 
 ```bash
 cd backend
@@ -76,13 +76,13 @@ python -m venv venv
 
 Activate virtual environment:
 
-**Windows**
+Windows
 
 ```bash
 venv\Scripts\activate
 ```
 
-**Linux/Mac**
+Linux/Mac
 
 ```bash
 source venv/bin/activate
@@ -136,7 +136,7 @@ Frontend will run at:
 http://localhost:3000
 ```
 
-## Admin Login
+Admin Login
 
 Use the hard-coded admin credentials:
 
@@ -147,7 +147,7 @@ Password: admin123
 
 Admin can view and manage all grievances submitted by different users.
 
-## User Flow
+User Flow
 
 1. Register as a citizen.
 2. Login as user.
@@ -156,7 +156,7 @@ Admin can view and manage all grievances submitted by different users.
 5. The grievance is classified and stored.
 6. User can view their submitted grievances.
 
-## Admin Flow
+Admin Flow
 
 1. Login using admin credentials.
 2. Open the admin dashboard.
@@ -164,7 +164,7 @@ Admin can view and manage all grievances submitted by different users.
 4. Update grievance status if required.
 5. View analytics and complaint trends.
 
-## Speech-To-Text
+Speech-To-Text
 
 GramVaani uses free local Whisper through `faster-whisper`.
 
@@ -185,14 +185,14 @@ Gujarati
 
 The system translates supported speech input into English so that the grievance can be analyzed consistently.
 
-## Important Notes
+Important Notes
 
 - Do not commit the `.env` file.
 - Use `.env.example` to show required environment variables.
 - SQLite database files such as `igrs.db` should not be pushed to GitHub.
 - Admin signup is disabled for security. Admin access is handled through fixed credentials.
 
-## Useful Commands
+Useful Commands
 
 Run backend:
 
@@ -215,7 +215,7 @@ Check backend API docs:
 http://127.0.0.1:8000/docs
 ```
 
-## License
+License
 
 This project is created for academic mini-project purposes.
 ```
